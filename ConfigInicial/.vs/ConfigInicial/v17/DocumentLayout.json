@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Cristyna\\Documents\\CompuGrafica\\ConfigInicial\\",
+  "WorkspaceRootPath": "C:\\Users\\Cristyna\\Documents\\GitHub\\CompuGraifica_CristinaSilva\\ConfigInicial\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AF9BA6E2-DDB0-44C5-9184-64F93938D365}|ConfigInicial\\ConfigInicial.vcxproj|C:\\Users\\Cristyna\\Documents\\CompuGrafica\\ConfigInicial\\ConfigInicial\\Main_Dibujo2D.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{AF9BA6E2-DDB0-44C5-9184-64F93938D365}|ConfigInicial\\ConfigInicial.vcxproj|C:\\Users\\Cristyna\\Documents\\GitHub\\CompuGraifica_CristinaSilva\\ConfigInicial\\ConfigInicial\\Main_Dibujo2D.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{AF9BA6E2-DDB0-44C5-9184-64F93938D365}|ConfigInicial\\ConfigInicial.vcxproj|solutionrelative:ConfigInicial\\Main_Dibujo2D.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Main_Dibujo2D.cpp",
-              "DocumentMoniker": "C:\\Users\\Cristyna\\Documents\\CompuGrafica\\ConfigInicial\\ConfigInicial\\Main_Dibujo2D.cpp",
+              "DocumentMoniker": "C:\\Users\\Cristyna\\Documents\\GitHub\\CompuGraifica_CristinaSilva\\ConfigInicial\\ConfigInicial\\Main_Dibujo2D.cpp",
               "RelativeDocumentMoniker": "ConfigInicial\\Main_Dibujo2D.cpp",
-              "ToolTip": "C:\\Users\\Cristyna\\Documents\\CompuGrafica\\ConfigInicial\\ConfigInicial\\Main_Dibujo2D.cpp",
+              "ToolTip": "C:\\Users\\Cristyna\\Documents\\GitHub\\CompuGraifica_CristinaSilva\\ConfigInicial\\ConfigInicial\\Main_Dibujo2D.cpp",
               "RelativeToolTip": "ConfigInicial\\Main_Dibujo2D.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAH0AAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFcAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-02-10T23:31:00.217Z",
               "EditorCaption": ""

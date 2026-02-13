@@ -1,3 +1,5 @@
+// Cristina Silva Alarcón
+
 #include<iostream>
 
 //#define GLEW_STATIC
@@ -23,7 +25,7 @@ int main() {
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);*/
 
-	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Dibujo de Primitivas en 2D", NULL, NULL);
+	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Dibujo de Primitivas en 2D - Cristina Silva Alarcon", NULL, NULL);
 	glfwSetFramebufferSizeCallback(window, resize);
 	
 	//Verificaci�n de errores de creacion  ventana
@@ -57,18 +59,84 @@ int main() {
 
     Shader ourShader("Shader/core.vs", "Shader/core.frag");
 
-	// Set up vertex data (and buffer(s)) and attribute pointers
-	float vertices[] = {
-		0.5f,  0.5f, 0.0f,    1.0f,1.0f,0.0f,  // top right
-		0.5f, -0.5f, 0.0f,    1.0f,1.0f,0.0f,  // bottom right
-		-0.5f, -0.5f, 0.0f,   1.0f,0.0f,1.0f,  // bottom left
-		-0.5f,  0.5f, 0.0f,   1.0f,1.0f,0.0f, // top left 
-	};
-	unsigned int indices[] = {  // note that we start from 0!
-		3,2,1,// second Triangle
-		0,1,3,
-		
-	};
+    float vertices[] = {
+        // Posición (x, y, z)      Color (r, g, b)
+
+        // TRIÁNGULO 1 - pico
+        -0.7f,  0.1f, 0.0f,       0.2f, 0.8f, 0.6f,  // 0
+        -0.55f,  0.35f, 0.0f,     0.2f, 0.8f, 0.6f,  // 1
+        -0.5f,  0.3f, 0.0f,       0.2f, 0.8f, 0.6f,  // 2
+
+        // TRIÁNGULO 2 - cabeza baja
+        -0.55f, 0.35f, 0.0f,      0.2f, 0.8f, 0.6f,  // 3
+        -0.5f, 0.3f, 0.0f,        0.2f, 0.8f, 0.6f,  // 4
+        -0.4f, 0.4f, 0.0f,        0.2f, 0.8f, 0.6f,  // 5
+
+        // TRIÁNGULO 3 - cabeza media
+        -0.55f, 0.35f, 0.0f,         0.2f, 0.8f, 0.6f,  // 6
+        -0.55f, 0.45f, 0.0f,         0.2f, 0.8f, 0.6f,  // 7
+        -0.4f, 0.4f, 0.0f,         0.2f, 0.8f, 0.6f,  // 8
+
+        // TRIÁNGULO 4 - cabeza alta
+        -0.55f, 0.45f, 0.0f,         0.2f, 0.8f, 0.6f,  // 9
+        -0.5f, 0.5f, 0.0f,         0.2f, 0.8f, 0.6f,  // 10
+        -0.4f, 0.4f, 0.0f,         0.2f, 0.8f, 0.6f,  // 11
+
+        // TRIÁNGULO 5 - pecho
+        -0.4f, 0.1f, 0.0f,         0.902f, 0.847f, 0.263f,  // 12
+        -0.4f, 0.4f, 0.0f,         0.902f, 0.847f, 0.263f,  // 13
+        0.2f, -0.2f, 0.0f,         0.902f, 0.847f, 0.263f,  // 14
+
+        // TRIÁNGULO 6 - espalda alta
+        -0.5f, 0.5f, 0.0f,         0.2f, 0.8f, 0.6f,  // 15
+        -0.2f, 0.2f, 0.0f,         0.2f, 0.8f, 0.6f,  // 16
+        -0.2f, 0.5f, 0.0f,         0.2f, 0.8f, 0.6f,  // 17
+
+        // TRIÁNGULO 7 - espalda media
+        -0.2f, 0.2f, 0.0f,         0.2f, 0.8f, 0.6f,  // 18
+        -0.2f, 0.5f, 0.0f,         0.2f, 0.8f, 0.6f,  // 19
+        0.1f, 0.2f, 0.0f,         0.2f, 0.8f, 0.6f,  // 20
+
+        // TRIÁNGULO 8 - espalda baja
+        -0.2f, 0.2f, 0.0f,         0.2f, 0.8f, 0.6f,  // 21
+        0.1f, 0.2f, 0.0f,         0.2f, 0.8f, 0.6f,  // 22
+        0.2f, -0.2f, 0.0f,         0.2f, 0.8f, 0.6f,  // 23
+
+        // TRIÁNGULO 9 - ala atrás
+        -0.2f, 0.5f, 0.0f,         0.2f, 0.8f, 0.6f,  // 24
+        0.1f, 0.2f, 0.0f,         0.2f, 0.8f, 0.6f,  // 25
+        0.4f, 0.8f, 0.0f,         0.2f, 0.8f, 0.6f,  // 26
+
+        // TRIÁNGULO 10 - ala frente
+        -0.2f, 0.5f, 0.0f,         0.2f, 0.8f, 0.6f,  // 27
+        0.1f, 0.2f, 0.0f,         0.2f, 0.8f, 0.6f,  // 28
+        0.6f, 0.7f, 0.0f,         0.2f, 0.8f, 0.6f,  // 29
+
+        // TRIÁNGULO 11 - cola alta
+        0.1f, -0.1f, 0.0f,         0.2f, 0.8f, 0.6f,  // 30
+        0.3f, -0.2f, 0.0f,         0.2f, 0.8f, 0.6f,  // 31
+        0.3f, 0.1f, 0.0f,         0.2f, 0.8f, 0.6f,  // 32
+
+        // TRIÁNGULO 12 - cola 2
+        0.1f, -0.1f, 0.0f,         0.2f, 0.8f, 0.6f,  // 33
+        0.3f, -0.4f, 0.0f,         0.2f, 0.8f, 0.6f,  // 34
+        0.4f, -0.1f, 0.0f,         0.2f, 0.8f, 0.6f,  // 35
+    };
+
+    unsigned int indices[] = {
+        0, 1, 2,        // Triángulo 1
+        3, 4, 5,        // Triángulo 2
+        6, 7, 8,        // Triángulo 3
+        9, 10, 11,      // Triángulo 4
+        12, 13, 14,     // Triángulo 5
+        15, 16, 17,     // Triángulo 6
+        18, 19, 20,     // Triángulo 7
+        21, 22, 23,     // Triángulo 8
+        24, 25, 26,     // Triángulo 9
+        27, 28, 29,     // Triángulo 10
+        30, 31, 32,     // Triángulo 11
+        33, 34, 35,     // Triángulo 12
+    };
 
 
 
@@ -123,11 +191,12 @@ int main() {
         //glPointSize(10);
         //glDrawArrays(GL_POINTS,0,4);
         
-        glDrawArrays(GL_LINES,4,2);
+        //glDrawArrays(GL_LINES,4,2);
         //glDrawArrays(GL_LINE_LOOP,0,4);
         
         //glDrawArrays(GL_TRIANGLES,0,3);
-        glDrawElements(GL_TRIANGLES, 3,GL_UNSIGNED_INT,0);
+        //glDrawElements(GL_TRIANGLES, 3,GL_UNSIGNED_INT,0);
+        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 
         
         
