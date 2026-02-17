@@ -86,12 +86,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Cristyna\Documents\CompuGrafica\ConfigInicial\External Libraries\GLFW\include;C:\Users\Cristyna\Documents\CompuGrafica\ConfigInicial\External Libraries\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\External Libraries\GLFW\include;C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\External Libraries\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Cristyna\Documents\CompuGrafica\ConfigInicial\External Libraries\GLFW\lib-vc2015;C:\Users\Cristyna\Documents\CompuGrafica\ConfigInicial\External Libraries\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\External Libraries\GLFW\lib-vc2015;C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\External Libraries\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -103,12 +103,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Cristyna\Documents\CompuGrafica\ConfigInicial\External Libraries\GLFW\include;C:\Users\Cristyna\Documents\CompuGrafica\ConfigInicial\External Libraries\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\External Libraries\GLFW\include;C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\External Libraries\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Cristyna\Documents\CompuGrafica\ConfigInicial\External Libraries\GLFW\lib-vc2015;C:\Users\Cristyna\Documents\CompuGrafica\ConfigInicial\External Libraries\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\External Libraries\GLFW\lib-vc2015;C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\External Libraries\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -118,12 +118,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Cristyna\Documents\CompuGrafica\ConfigInicial\External Libraries\GLFW\include;C:\Users\Cristyna\Documents\CompuGrafica\ConfigInicial\External Libraries\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\External Libraries\GLFW\include;C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\External Libraries\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Cristyna\Documents\CompuGrafica\ConfigInicial\External Libraries\GLFW\lib-vc2015;C:\Users\Cristyna\Documents\CompuGrafica\ConfigInicial\External Libraries\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\External Libraries\GLFW\lib-vc2015;C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\External Libraries\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -135,12 +135,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Cristyna\Documents\CompuGrafica\ConfigInicial\External Libraries\GLFW\include;C:\Users\Cristyna\Documents\CompuGrafica\ConfigInicial\External Libraries\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\External Libraries\GLFW\include;C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\External Libraries\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Cristyna\Documents\CompuGrafica\ConfigInicial\External Libraries\GLFW\lib-vc2015;C:\Users\Cristyna\Documents\CompuGrafica\ConfigInicial\External Libraries\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\External Libraries\GLFW\lib-vc2015;C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\External Libraries\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
