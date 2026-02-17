@@ -1,0 +1,12 @@
+# Visual Studio (archivos locales del IDE)
+.vs/
+
+# Salidas de compilación
+Debug/
+x64/Debug/
+
+# Recomendado (por si existen)
+Release/
+x64/Release/
+[Bb]in/
+[Oo]bj/
