@@ -221,9 +221,11 @@ int main() {
 		glm::mat4 view=glm::mat4(1);
 	
 		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -12.0f)); //esta es la vista, se puede acercar o alejar el cubo con el valor del eje z, se puede usar con ambas proyecciones
-		model = glm::rotate( model, 0.5f, glm::vec3( 0.0f, 1.0f, 0.0f ) ); // use to compare orthographic and perspective projection
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f)); //aquí se puede escalar el cubo con diferentes valores, se puede usar con ambas proyecciones
-		//view = glm::translate( view, glm::vec3( screenWidth / 2, screenHeight / 8,-800.0f ) ); // use with orthographic projection
+
+		// cubo 1
+		model = glm::translate(model, glm::vec3(-5.0f, -4.5f, 0.0f));
+		model = glm::rotate( model, 1.3f, glm::vec3( 0.0f, 1.0f, 0.0f ) ); // use to compare orthographic and perspective projection
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f)); //aquí se puede escalar el cubo con diferentes valores, se puede usar con ambas proyecciones
 		
 		GLint modelLoc = glGetUniformLocation(ourShader.Program, "model");
 		GLint viewLoc = glGetUniformLocation(ourShader.Program, "view");
@@ -236,11 +238,20 @@ int main() {
 
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
-		//Agregando un nuevo elemento
+
+		//cubo 2
 		model = glm::mat4(1); // se inicializa en 1
-		model = glm::translate(model, glm::vec3(5.0f, 0.0f, 0.0f)); //se aplica una traslacion al modelo para que se dibuje a la derecha del cubo original, se mueve 5 unidades en el eje x
-		model = glm::rotate(model, 0.30f, glm::vec3(1.0f, 0.0f, 1.0f));
-		model = glm::scale(model, glm::vec3(4.0f, 1.0f, 10.0f));
+		model = glm::translate(model, glm::vec3(-4.0f, -2.0f, 0.0f)); //el eje y se decide en base a y de translate del cubo anterior + la escala y del cubo anterior
+		model = glm::rotate(model, 1.9f, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.2f, 2.2f, 2.2f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); //se le pasa la información al shader para que se dibuje el nuevo cubo
+		glDrawArrays(GL_TRIANGLES, 0, 36); //se dibuja el nuevo cubo
+
+		//cubo 3
+		model = glm::mat4(1); // se inicializa en 1
+		model = glm::translate(model, glm::vec3(-2.8f, -0.2f, 0.0f)); //el eje y se decide en base a y de translate del cubo anterior - la escala y del cubo anterior
+		model = glm::rotate(model, 0.5f, glm::vec3(0.0f, 1.0f, 0.0f)); //cuanto gira
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f)); //tamaño del cubo
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); //se le pasa la información al shader para que se dibuje el nuevo cubo
 		glDrawArrays(GL_TRIANGLES, 0, 36); //se dibuja el nuevo cubo
 		
