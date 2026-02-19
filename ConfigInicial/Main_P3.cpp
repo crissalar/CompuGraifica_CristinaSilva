@@ -1,4 +1,5 @@
-// Cristina Silva Alarcon
+// Práctica 3                                 Cristina Silva Alarcon
+// Fecha de entrega: 19 de Febrero de 2026    319271108
 
 #include<iostream>
 
@@ -123,47 +124,47 @@ int main() {
 
 	// use with Perspective Projection
 	float vertices[] = {
-		-0.5f, -0.5f, 0.5f, 1.0f, 0.0f,0.0f,//Front
-		0.5f, -0.5f, 0.5f,  1.0f, 0.0f,0.0f,
-		0.5f,  0.5f, 0.5f,  1.0f, 0.0f,0.0f,
-		0.5f,  0.5f, 0.5f,  1.0f, 0.0f,0.0f,
-		-0.5f,  0.5f, 0.5f, 1.0f, 0.0f,0.0f,
-		-0.5f, -0.5f, 0.5f, 1.0f, 0.0f,0.0f,
-		
-	    -0.5f, -0.5f,-0.5f, 0.0f, 1.0f,0.0f,//Back
-		 0.5f, -0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-		 0.5f,  0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-		 0.5f,  0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-	    -0.5f,  0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-	    -0.5f, -0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-		
-		 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,1.0f,
-		 0.5f, -0.5f, -0.5f,  0.0f, 0.0f,1.0f,
-		 0.5f,  0.5f, -0.5f,  0.0f, 0.0f,1.0f,
-		 0.5f,  0.5f, -0.5f,  0.0f, 0.0f,1.0f,
-		 0.5f,  0.5f,  0.5f,  0.0f, 0.0f,1.0f,
-		 0.5f,  -0.5f, 0.5f, 0.0f, 0.0f,1.0f,
-      
-		-0.5f,  0.5f,  0.5f,  1.0f, 1.0f,0.0f,
-		-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,0.0f,
-		-0.5f, -0.5f, -0.5f,  1.0f, 1.0f,0.0f,
-		-0.5f, -0.5f, -0.5f,  1.0f, 1.0f,0.0f,
-		-0.5f, -0.5f,  0.5f,  1.0f, 1.0f,0.0f,
-		-0.5f,  0.5f,  0.5f,  1.0f, 1.0f,0.0f,
-		
-		-0.5f, -0.5f, -0.5f, 0.0f, 1.0f,1.0f,
-		0.5f, -0.5f, -0.5f,  0.0f, 1.0f,1.0f,
-		0.5f, -0.5f,  0.5f,  0.0f, 1.0f,1.0f,
-		0.5f, -0.5f,  0.5f,  0.0f, 1.0f,1.0f,
-		-0.5f, -0.5f,  0.5f, 0.0f, 1.0f,1.0f,
-		-0.5f, -0.5f, -0.5f, 0.0f, 1.0f,1.0f,
-		
-		-0.5f,  0.5f, -0.5f, 1.0f, 0.2f,0.5f,
-		0.5f,  0.5f, -0.5f,  1.0f, 0.2f,0.5f,
-		0.5f,  0.5f,  0.5f,  1.0f, 0.2f,0.5f,
-		0.5f,  0.5f,  0.5f,  1.0f, 0.2f,0.5f,
-		-0.5f,  0.5f,  0.5f, 1.0f, 0.2f,0.5f,
-		-0.5f,  0.5f, -0.5f, 1.0f, 0.2f,0.5f,
+	-0.5f, -0.5f, 0.5f, 0.918f, 0.914f, 0.255f, //Front
+	 0.5f, -0.5f, 0.5f, 0.918f, 0.914f, 0.255f,
+	 0.5f,  0.5f, 0.5f, 0.918f, 0.914f, 0.255f,
+	 0.5f,  0.5f, 0.5f, 0.918f, 0.914f, 0.255f,
+	-0.5f,  0.5f, 0.5f, 0.918f, 0.914f, 0.255f,
+	-0.5f, -0.5f, 0.5f, 0.918f, 0.914f, 0.255f,
+
+	-0.5f, -0.5f,-0.5f, 0.376f, 0.459f, 0.902f, //Back
+	 0.5f, -0.5f,-0.5f, 0.376f, 0.459f, 0.902f,
+	 0.5f,  0.5f,-0.5f, 0.376f, 0.459f, 0.902f,
+	 0.5f,  0.5f,-0.5f, 0.376f, 0.459f, 0.902f,
+	-0.5f,  0.5f,-0.5f, 0.376f, 0.459f, 0.902f,
+	-0.5f, -0.5f,-0.5f, 0.376f, 0.459f, 0.902f,
+
+	 0.5f, -0.5f,  0.5f, 0.745f, 0.376f, 0.902f, //Derecha
+	 0.5f, -0.5f, -0.5f, 0.745f, 0.376f, 0.902f,
+	 0.5f,  0.5f, -0.5f, 0.745f, 0.376f, 0.902f,
+	 0.5f,  0.5f, -0.5f, 0.745f, 0.376f, 0.902f,
+	 0.5f,  0.5f,  0.5f, 0.745f, 0.376f, 0.902f,
+	 0.5f, -0.5f,  0.5f, 0.745f, 0.376f, 0.902f,
+
+	-0.5f,  0.5f,  0.5f, 0.376f, 0.902f, 0.400f, //Izquierda
+	-0.5f,  0.5f, -0.5f, 0.376f, 0.902f, 0.400f,
+	-0.5f, -0.5f, -0.5f, 0.376f, 0.902f, 0.400f,
+	-0.5f, -0.5f, -0.5f, 0.376f, 0.902f, 0.400f,
+	-0.5f, -0.5f,  0.5f, 0.376f, 0.902f, 0.400f,
+	-0.5f,  0.5f,  0.5f, 0.376f, 0.902f, 0.400f,
+
+	-0.5f, -0.5f, -0.5f, 0.757f, 0.184f, 0.918f, //Abajo
+	 0.5f, -0.5f, -0.5f, 0.757f, 0.184f, 0.918f,
+	 0.5f, -0.5f,  0.5f, 0.757f, 0.184f, 0.918f,
+	 0.5f, -0.5f,  0.5f, 0.757f, 0.184f, 0.918f,
+	-0.5f, -0.5f,  0.5f, 0.757f, 0.184f, 0.918f,
+	-0.5f, -0.5f, -0.5f, 0.757f, 0.184f, 0.918f,
+
+	-0.5f,  0.5f, -0.5f, 0.922f, 0.247f, 0.145f, //Arriba
+	 0.5f,  0.5f, -0.5f, 0.922f, 0.247f, 0.145f,
+	 0.5f,  0.5f,  0.5f, 0.922f, 0.247f, 0.145f,
+	 0.5f,  0.5f,  0.5f, 0.922f, 0.247f, 0.145f,
+	-0.5f,  0.5f,  0.5f, 0.922f, 0.247f, 0.145f,
+	-0.5f,  0.5f, -0.5f, 0.922f, 0.247f, 0.145f,
 	};
 
 
@@ -222,7 +223,7 @@ int main() {
 	
 		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -12.0f)); //esta es la vista, se puede acercar o alejar el cubo con el valor del eje z, se puede usar con ambas proyecciones
 
-		// cubo 1
+		// caja 1
 		model = glm::translate(model, glm::vec3(-5.0f, -4.5f, 0.0f));
 		model = glm::rotate( model, 1.3f, glm::vec3( 0.0f, 1.0f, 0.0f ) ); // use to compare orthographic and perspective projection
 		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f)); //aquí se puede escalar el cubo con diferentes valores, se puede usar con ambas proyecciones
@@ -239,21 +240,64 @@ int main() {
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
-		//cubo 2
-		model = glm::mat4(1); // se inicializa en 1
-		model = glm::translate(model, glm::vec3(-4.0f, -2.0f, 0.0f)); //el eje y se decide en base a y de translate del cubo anterior + la escala y del cubo anterior
-		model = glm::rotate(model, 1.9f, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(2.2f, 2.2f, 2.2f));
+		//caja 2
+		model = glm::mat4(1); //se inicializa en 1 para que no se acumulen las transformaciones, es decir, para que cada caja tenga sus propias transformaciones y no se sumen a las anteriores
+		model = glm::translate(model, glm::vec3(-3.6f, -2.15f, 0.0f));
+		model = glm::rotate(model, -0.7f, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 2.2f, 2.2f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); //se le pasa la información al shader para que se dibuje el nuevo cubo
-		glDrawArrays(GL_TRIANGLES, 0, 36); //se dibuja el nuevo cubo
+		glDrawArrays(GL_TRIANGLES, 0, 36); //se dibuja la nueva caja
 
-		//cubo 3
-		model = glm::mat4(1); // se inicializa en 1
-		model = glm::translate(model, glm::vec3(-2.8f, -0.2f, 0.0f)); //el eje y se decide en base a y de translate del cubo anterior - la escala y del cubo anterior
-		model = glm::rotate(model, 0.5f, glm::vec3(0.0f, 1.0f, 0.0f)); //cuanto gira
-		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f)); //tamaño del cubo
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); //se le pasa la información al shader para que se dibuje el nuevo cubo
-		glDrawArrays(GL_TRIANGLES, 0, 36); //se dibuja el nuevo cubo
+		//caja 3
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-2.0f, -0.05f, 0.0f));
+		model = glm::rotate(model, 0.5f, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.8f, 2.0f, 1.8f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		//caja 4
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-1.0f, 1.7f, 0.0f));
+		model = glm::rotate(model, 1.57f, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, -1.5708f, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(4.0f, 0.9f, 1.5f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		//caja 5
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-0.5f, 3.1f, 0.0f));
+		model = glm::rotate(model, 0.9f, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.4f, 1.3f, 1.3f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		//caja 6
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(1.0f, 4.35f, 0.0f));
+		model = glm::rotate(model, 0.3f, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 1.5708f, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.5f, 1.1f, 1.2f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		//caja 7
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-0.3f, 5.3f, 0.0f));
+		model = glm::rotate(model, 2.1f, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.8f, 0.7f, 0.8f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		//caja 8
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(0.3f, 5.85f, 0.0f));
+		model = glm::rotate(model, 2.8f, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 1.5708f, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 1.5f, 0.4f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 		
 		glBindVertexArray(0);
 
