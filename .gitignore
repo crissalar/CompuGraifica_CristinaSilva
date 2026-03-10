@@ -1,5 +1,5 @@
 # Visual Studio (archivos locales del IDE)
-.vs/
+**/.vs/
 
 # Salidas de compilación
 Debug/
@@ -10,3 +10,7 @@ Release/
 x64/Release/
 [Bb]in/
 [Oo]bj/
+
+# Archivos de proyecto locales
+*.vcxproj.filters
+*.user
