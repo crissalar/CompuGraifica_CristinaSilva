@@ -1,2 +1,9 @@
-﻿  Modelado_Jerarquico.cpp
+﻿  Carga de Modelos.cpp
+C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\ConfigInicial\Carga de Modelos.cpp(110,30): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\ConfigInicial\Carga de Modelos.cpp(204,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\ConfigInicial\Carga de Modelos.cpp(205,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\ConfigInicial\Carga de Modelos.cpp(209,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\ConfigInicial\Carga de Modelos.cpp(210,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\ConfigInicial\Carga de Modelos.cpp(212,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\ConfigInicial\Carga de Modelos.cpp(213,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
   ConfigInicial.vcxproj -> C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\Debug\ConfigInicial.exe
