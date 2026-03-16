@@ -1,9 +1,11 @@
-// Previo 6                         Silva Alarcón Cristina
-// Fecha de Entrega: 09/03/2026     319271108
+// Práctica 6                         Silva Alarcón Cristina
+// Fecha de Entrega: 15/03/2026       319271108
 
 
 // Std. Includes
 #include <string>
+
+#include <windows.h>
 
 // GLEW
 #include <GL/glew.h>
@@ -48,6 +50,12 @@ GLfloat lastFrame = 0.0f;
 
 int main( )
 {
+    // Consola para debug
+    AllocConsole();
+    FILE* f;
+    freopen_s(&f, "CONOUT$", "w", stdout);
+
+
     // Init GLFW
     glfwInit( );
     // Set all the required options for GLFW
@@ -98,7 +106,7 @@ int main( )
     Shader shader( "Shader/modelLoading.vs", "Shader/modelLoading.frag" );
     
     // Load models
-	Model dog((char*)"Models/RedDog.obj");
+	Model dog((char*)"Models/modelo_final/final_scenary.obj");
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
     
   
@@ -128,11 +136,6 @@ int main( )
         // Draw the loaded model
         glm::mat4 model(1);
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-		dog.Draw(shader);
-
-		model = glm::translate(model, glm::vec3(3.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
-		glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
 		dog.Draw(shader);
         
 
