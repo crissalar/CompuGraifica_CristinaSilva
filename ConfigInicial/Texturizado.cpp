@@ -1,5 +1,5 @@
-// Previo 7                     Cristina Silva Alarcon
-// Fecha de Entrega: 17/03/26                319271108
+﻿// Práctica 7                     Cristina Silva Alarcon
+// Fecha de Entrega: 22/03/26                319271108
 
 
 #include <iostream>
@@ -101,36 +101,80 @@ int main()
 	Shader lampShader("Shader/lamp.vs", "Shader/lamp.frag");
 
 	// Set up vertex data (and buffer(s)) and attribute pointers
-	GLfloat vertices[] =
-	{
-		// Positions            // Colors              // Texture Coords
-		-0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f,
-		0.5f, -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,		1.0f,0.0f,
-		0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,	    1.0f,1.0f,
-		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f,
+	GLfloat vertices[] = {
+		// Cara FRONTAL (1)
+		-0.5f, -0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.25f, 0.5000f,
+		 0.5f, -0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.50f, 0.5000f,
+		 0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.50f, 0.7535f,
+		 0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.50f, 0.7535f,
+		-0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.25f, 0.7535f,
+		-0.5f, -0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.25f, 0.5000f,
 
-		
+		// Cara TRASERA (6)
+		-0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,  0.75f, 0.5000f,
+		 0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,  1.00f, 0.5000f,
+		 0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,  1.00f, 0.7535f,
+		 0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,  1.00f, 0.7535f,
+		-0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,  0.75f, 0.7535f,
+		-0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,  0.75f, 0.5000f,
+
+		// Cara DERECHA (4)
+		 0.5f, -0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.50f, 0.5000f,
+		 0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,  0.75f, 0.5000f,
+		 0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,  0.75f, 0.7535f,
+		 0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,  0.75f, 0.7535f,
+		 0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.50f, 0.7535f,
+		 0.5f, -0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.50f, 0.5000f,
+
+		 // Cara IZQUIERDA (3)
+		 -0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.25f, 0.7535f,
+		 -0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,  0.00f, 0.7535f,
+		 -0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,  0.00f, 0.5000f,
+		 -0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,  0.00f, 0.5000f,
+		 -0.5f, -0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.25f, 0.5000f,
+		 -0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.25f, 0.7535f,
+
+		 // Cara ABAJO (5)
+		-0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,  0.25f, 0.7384f,
+		 0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,  0.50f, 0.7384f,
+		 0.5f, -0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.50f, 0.9919f,
+		 0.5f, -0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.50f, 0.9919f,
+		-0.5f, -0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.25f, 0.9919f,
+		-0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,  0.25f, 0.7384f,
+
+		// Cara ARRIBA (2)
+		-0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,  0.25f, 0.2517f,
+		 0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,  0.50f, 0.2517f,
+		 0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.50f, 0.5052f,
+		 0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.50f, 0.5052f,
+		-0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,  0.25f, 0.5052f,
+		-0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,  0.25f, 0.2517f,
+
 	};
 
-	GLuint indices[] =
-	{  // Note that we start from 0!
-		0,1,3,
-		1,2,3
-	
-	};
+
+
+
+	//GLuint indices[] =
+	//{  // Note that we start from 0!
+	//	0,1,3,
+	//	1,2,3
+	//
+	//};
 
 	// First, set the container's VAO (and VBO)
-	GLuint VBO, VAO,EBO;
+	//GLuint VBO, VAO,EBO;
+	GLuint VBO, VAO;
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &EBO);
+	//glGenBuffers(1, &EBO);
 
 	glBindVertexArray(VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	// Position attribute
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid *)0);
@@ -148,7 +192,9 @@ int main()
 	glGenTextures(1, &texture1);
 	glBindTexture(GL_TEXTURE_2D,texture1);
 	int textureWidth, textureHeight,nrChannels;
-	stbi_set_flip_vertically_on_load(true);
+
+	//stbi_set_flip_vertically_on_load(true);
+
 	unsigned char *image;
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -156,16 +202,20 @@ int main()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
 	// Diffuse map
 	//image = stbi_load("images/forest.jpg", &textureWidth, &textureHeight, &nrChannels,0);
-	image = stbi_load("images/jail.png", &textureWidth, &textureHeight, &nrChannels, 0);
+	image = stbi_load("images/dado.png", &textureWidth, &textureHeight, &nrChannels, 0);
 
 	glBindTexture(GL_TEXTURE_2D, texture1);
 	//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image); // RGB for jpg without alpha channel
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, image); // RGBA for png with alpha channel
-	glGenerateMipmap(GL_TEXTURE_2D);
+	
+	//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, image); // RGBA for png with alpha channel
+	//glGenerateMipmap(GL_TEXTURE_2D);
 	if (image)
 	{
+		std::cout << "OK - Textura: " << textureWidth << "x" << textureHeight << " canales: " << nrChannels << std::endl;
 		//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image); // RGB for jpg without alpha channel
+		
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, image); // RGBA for png with alpha channel
+		
 		glGenerateMipmap(GL_TEXTURE_2D);
 	}
 	else
@@ -173,6 +223,9 @@ int main()
 		std::cout << "Failed to load texture" << std::endl;
 	}
 	stbi_image_free(image);
+
+	lampShader.Use();
+	glUniform1i(glGetUniformLocation(lampShader.Program, "ourTexture"), 0);
 
 	
 
@@ -214,7 +267,8 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		// Draw the light object (using light's vertex attributes)
 		glBindVertexArray(VAO);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 		glBindVertexArray(0);
 
 		// Swap the screen buffers
@@ -223,7 +277,7 @@ int main()
 
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
-	glDeleteBuffers(1, &EBO);
+	//glDeleteBuffers(1, &EBO);
 	// Terminate GLFW, clearing any resources allocated by GLFW.
 	glfwTerminate();
 
