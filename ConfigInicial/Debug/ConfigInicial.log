@@ -1,9 +1,0 @@
-﻿  Texturizado.cpp
-C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\ConfigInicial\Texturizado.cpp(236,24): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\ConfigInicial\Texturizado.cpp(337,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\ConfigInicial\Texturizado.cpp(338,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\ConfigInicial\Texturizado.cpp(342,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\ConfigInicial\Texturizado.cpp(343,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\ConfigInicial\Texturizado.cpp(345,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\ConfigInicial\Texturizado.cpp(346,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-  ConfigInicial.vcxproj -> C:\Users\Cristy\Documents\GitHub\CompuGraifica_CristinaSilva\Debug\ConfigInicial.exe
