@@ -1,5 +1,5 @@
-// Previo 11                          Cristina Silva Alarcon
-// Fecha de Entrega: 21/06/2026       319271108
+﻿// Práctica 11                          Cristina Silva Alarcon
+// Fecha de Entrega: 22/06/2026         319271108
 
 #include <iostream>
 #include <cmath>
@@ -510,51 +510,99 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 	
 }
 void Animation() {
-	if (AnimBall)
-	{
-		rotBall += 0.4f;
-		//printf("%f", rotBall);
-	}
-	
-	if (AnimDog)
-	{
-		rotDog -= 0.6f;
-		//printf("%f", rotBall);
+	if (AnimBall) { rotBall += 0.4f; }
+	if (AnimDog) { rotDog -= 0.6f; }
+
+	// --- Animación de patas (para todos los tramos) ---
+	if (dogAnim >= 1 && dogAnim <= 9) {
+		if (!step) {
+			RLegs += 0.03f; FLegs += 0.03f;
+			head += 0.03f; tail += 0.03f;
+			if (RLegs > 15.0f) step = true;
+		}
+		else {
+			RLegs -= 0.03f; FLegs -= 0.03f;
+			head -= 0.03f; tail -= 0.03f;
+			if (RLegs < -15.0f) step = false;
+		}
 	}
 
-	if (dogAnim == 1) //walk animation
-	{
-		if (!step) { //state 1
-			RLegs += 0.03f;
-			FLegs += 0.03f;
-			head += 0.03f;
-			tail += 0.03f;
-			if(RLegs > 15.0f) //Condition to change state
-				step = true;
-		}
-		else { //state 2
-			RLegs -= 0.03f;
-			FLegs -= 0.03f;
-			head -= 0.03f;
-			tail -= 0.03f;
-			if (RLegs < -15.0f) //Condition to change state
-				step = false;
-		}
+	// --- Tramo 1: avanzar en +Z ---
+	if (dogAnim == 1) {
 		if (dogPos.z < 2.251928f)
-		{
 			dogPos.z += 0.0005f;
-		}
 		else
-		{
-			dogAnim = 0;
-			FLegs = 0.0f; RLegs = 0.0f;
-			head = 0.0f;  tail = 0.0f;
-		}
-
+			dogAnim = 2;
 	}
-	
-	
-	
+
+	// --- Giro 1: 0° → 90° ---
+	if (dogAnim == 2) {
+		dogRot += 0.5f;
+		if (dogRot >= 90.0f) { dogRot = 90.0f; dogAnim = 3; }
+	}
+
+	// --- Tramo 2: avanzar en +X ---
+	if (dogAnim == 3) {
+		if (dogPos.x < 2.251928f)
+			dogPos.x += 0.0005f;
+		else
+			dogAnim = 4;
+	}
+
+	// --- Giro 2: 90° → 180° ---
+	if (dogAnim == 4) {
+		dogRot += 0.5f;
+		if (dogRot >= 180.0f) { dogRot = 180.0f; dogAnim = 5; }
+	}
+
+	// --- Tramo 3: avanzar en -Z ---
+	if (dogAnim == 5) {
+		if (dogPos.z > -2.251928f)
+			dogPos.z -= 0.0005f;
+		else
+			dogAnim = 6;
+	}
+
+	// --- Giro 3: 180° → 270° ---
+	if (dogAnim == 6) {
+		dogRot += 0.5f;
+		if (dogRot >= 270.0f) { dogRot = 270.0f; dogAnim = 7; }
+	}
+
+	// --- Tramo 4: avanzar en -X hasta x=-2.25 ---
+	if (dogAnim == 7) {
+		if (dogPos.x > -2.251928f)
+			dogPos.x -= 0.0005f;
+		else
+			dogAnim = 8;
+	}
+
+	// --- Giro 4: 270° → 405° (135° a la izquierda) ---
+	if (dogAnim == 8) {
+		dogRot += 0.5f;
+		if (dogRot >= 405.0f) { dogRot = 405.0f; dogAnim = 9; }
+	}
+
+	// --- Tramo 5: avanzar en diagonal hacia el centro (0,0,0) ---
+	if (dogAnim == 9) {
+		float speed = 0.0005f / sqrt(2.0f);
+		dogPos.x += speed;
+		dogPos.z += speed;
+
+		if (dogPos.x >= 0.0f && dogPos.z >= 0.0f) {
+			dogPos.x = 0.0f;
+			dogPos.z = 0.0f;
+			dogAnim = 10;
+		}
+	}
+
+	// --- Estado final ---
+	if (dogAnim == 10) {
+		dogAnim = 0;
+		dogRot = 0.0f;  // regresa a mirar al frente
+		FLegs = 0.0f; RLegs = 0.0f;
+		head = 0.0f; tail = 0.0f;
+	}
 }
 
 void MouseCallback(GLFWwindow *window, double xPos, double yPos)
