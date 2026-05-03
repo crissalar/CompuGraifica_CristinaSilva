@@ -1,6 +1,5 @@
-﻿// Previo 12                           Cristina Silva Alarcon
-// Fecha de Entrega: 27/04/26          319271108
-
+﻿// Practica 12                           Cristina Silva Alarcon
+// Fecha de Entrega: 03/05/26            319271108
 
 #include <iostream>
 #include <cmath>
@@ -108,18 +107,23 @@ float rotDog = 0.0f;
 int   dogAnim = 0;
 
 // --- Partes animables individualmente ---
-float FLegL = 0.0f;   // Pata delantera izquierda 
-float FLegR = 0.0f;   // Pata delantera derecha 
-float BLegL = 0.0f;   // Pata trasera izquierda  
-float BLegR = 0.0f;   // Pata trasera derecha  
-float head = 0.0f;   // Cabeza
-float tail = 0.0f;   // Cola
-float torso = 0.0f;   // Inclinación del torso (eje X, para sentarse)
+float FLegL = 0.0f;
+float FLegR = 0.0f;
+float BLegL = 0.0f;
+float BLegR = 0.0f;
+float head = 0.0f;
+float tail = 0.0f;
+float torso = 0.0f;
 
 // KeyFrames
 float dogPosX, dogPosY, dogPosZ;
 
-#define MAX_FRAMES 9
+// =====================================================================
+// Sistema de múltiples animaciones
+// =====================================================================
+#define MAX_ANIMS  5    // número máximo de animaciones guardadas
+#define MAX_FRAMES 15    // keyframes por animación
+
 int i_max_steps = 190;
 int i_curr_steps = 0;
 
@@ -142,78 +146,84 @@ typedef struct _frame {
     float BLegR, BLegRInc;
 } FRAME;
 
-FRAME KeyFrame[MAX_FRAMES];
-int  FrameIndex = 0;
+FRAME KeyFrame[MAX_ANIMS][MAX_FRAMES];  // [animación][frame]
+int   FrameIndex[MAX_ANIMS] = { 0 };      // cuántos frames tiene cada animación
+int   currentAnim = 0;                  // animación activa (grabación/reproducción)
+
 bool play = false;
 int  playIndex = 0;
 
+// =====================================================================
 void saveFrame(void)
 {
-    printf("frameindex %d\n", FrameIndex);
+    int a = currentAnim;
+    int f = FrameIndex[a];
+    if (f >= MAX_FRAMES) { printf("Anim %d llena (max %d frames)\n", a, MAX_FRAMES); return; }
 
-    KeyFrame[FrameIndex].dogPosX = dogPosX;
-    KeyFrame[FrameIndex].dogPosY = dogPosY;
-    KeyFrame[FrameIndex].dogPosZ = dogPosZ;
+    printf("Anim %d  ->  frame %d guardado\n", a, f);
 
-    KeyFrame[FrameIndex].rotDog = rotDog;
-    KeyFrame[FrameIndex].head = head;
-    KeyFrame[FrameIndex].tail = tail;
-    KeyFrame[FrameIndex].torso = torso;
+    KeyFrame[a][f].dogPosX = dogPosX;
+    KeyFrame[a][f].dogPosY = dogPosY;
+    KeyFrame[a][f].dogPosZ = dogPosZ;
+    KeyFrame[a][f].rotDog = rotDog;
+    KeyFrame[a][f].head = head;
+    KeyFrame[a][f].tail = tail;
+    KeyFrame[a][f].torso = torso;
+    KeyFrame[a][f].FLegL = FLegL;
+    KeyFrame[a][f].FLegR = FLegR;
+    KeyFrame[a][f].BLegL = BLegL;
+    KeyFrame[a][f].BLegR = BLegR;
 
-    KeyFrame[FrameIndex].FLegL = FLegL;
-    KeyFrame[FrameIndex].FLegR = FLegR;
-    KeyFrame[FrameIndex].BLegL = BLegL;
-    KeyFrame[FrameIndex].BLegR = BLegR;
-
-    FrameIndex++;
+    FrameIndex[a]++;
 }
 
+// =====================================================================
 void resetElements(void)
 {
-    dogPosX = KeyFrame[0].dogPosX;
-    dogPosY = KeyFrame[0].dogPosY;
-    dogPosZ = KeyFrame[0].dogPosZ;
-
-    rotDog = KeyFrame[0].rotDog;
-    head = KeyFrame[0].head;
-    tail = KeyFrame[0].tail;
-    torso = KeyFrame[0].torso;
-
-    FLegL = KeyFrame[0].FLegL;
-    FLegR = KeyFrame[0].FLegR;
-    BLegL = KeyFrame[0].BLegL;
-    BLegR = KeyFrame[0].BLegR;
+    int a = currentAnim;
+    dogPosX = KeyFrame[a][0].dogPosX;
+    dogPosY = KeyFrame[a][0].dogPosY;
+    dogPosZ = KeyFrame[a][0].dogPosZ;
+    rotDog = KeyFrame[a][0].rotDog;
+    head = KeyFrame[a][0].head;
+    tail = KeyFrame[a][0].tail;
+    torso = KeyFrame[a][0].torso;
+    FLegL = KeyFrame[a][0].FLegL;
+    FLegR = KeyFrame[a][0].FLegR;
+    BLegL = KeyFrame[a][0].BLegL;
+    BLegR = KeyFrame[a][0].BLegR;
 }
 
+// =====================================================================
 void interpolation(void)
 {
+    int a = currentAnim;
     int n = playIndex;
 
-    KeyFrame[n].incX = (KeyFrame[n + 1].dogPosX - KeyFrame[n].dogPosX) / i_max_steps;
-    KeyFrame[n].incY = (KeyFrame[n + 1].dogPosY - KeyFrame[n].dogPosY) / i_max_steps;
-    KeyFrame[n].incZ = (KeyFrame[n + 1].dogPosZ - KeyFrame[n].dogPosZ) / i_max_steps;
-
-    KeyFrame[n].rotDogInc = (KeyFrame[n + 1].rotDog - KeyFrame[n].rotDog) / i_max_steps;
-    KeyFrame[n].headInc = (KeyFrame[n + 1].head - KeyFrame[n].head) / i_max_steps;
-    KeyFrame[n].tailInc = (KeyFrame[n + 1].tail - KeyFrame[n].tail) / i_max_steps;
-    KeyFrame[n].torsoInc = (KeyFrame[n + 1].torso - KeyFrame[n].torso) / i_max_steps;
-
-    KeyFrame[n].FLegLInc = (KeyFrame[n + 1].FLegL - KeyFrame[n].FLegL) / i_max_steps;
-    KeyFrame[n].FLegRInc = (KeyFrame[n + 1].FLegR - KeyFrame[n].FLegR) / i_max_steps;
-    KeyFrame[n].BLegLInc = (KeyFrame[n + 1].BLegL - KeyFrame[n].BLegL) / i_max_steps;
-    KeyFrame[n].BLegRInc = (KeyFrame[n + 1].BLegR - KeyFrame[n].BLegR) / i_max_steps;
+    KeyFrame[a][n].incX = (KeyFrame[a][n + 1].dogPosX - KeyFrame[a][n].dogPosX) / i_max_steps;
+    KeyFrame[a][n].incY = (KeyFrame[a][n + 1].dogPosY - KeyFrame[a][n].dogPosY) / i_max_steps;
+    KeyFrame[a][n].incZ = (KeyFrame[a][n + 1].dogPosZ - KeyFrame[a][n].dogPosZ) / i_max_steps;
+    KeyFrame[a][n].rotDogInc = (KeyFrame[a][n + 1].rotDog - KeyFrame[a][n].rotDog) / i_max_steps;
+    KeyFrame[a][n].headInc = (KeyFrame[a][n + 1].head - KeyFrame[a][n].head) / i_max_steps;
+    KeyFrame[a][n].tailInc = (KeyFrame[a][n + 1].tail - KeyFrame[a][n].tail) / i_max_steps;
+    KeyFrame[a][n].torsoInc = (KeyFrame[a][n + 1].torso - KeyFrame[a][n].torso) / i_max_steps;
+    KeyFrame[a][n].FLegLInc = (KeyFrame[a][n + 1].FLegL - KeyFrame[a][n].FLegL) / i_max_steps;
+    KeyFrame[a][n].FLegRInc = (KeyFrame[a][n + 1].FLegR - KeyFrame[a][n].FLegR) / i_max_steps;
+    KeyFrame[a][n].BLegLInc = (KeyFrame[a][n + 1].BLegL - KeyFrame[a][n].BLegL) / i_max_steps;
+    KeyFrame[a][n].BLegRInc = (KeyFrame[a][n + 1].BLegR - KeyFrame[a][n].BLegR) / i_max_steps;
 }
 
 // Deltatime
 GLfloat deltaTime = 0.0f;
 GLfloat lastFrame = 0.0f;
 
+// =====================================================================
 int main()
 {
     glfwInit();
 
     GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT,
-        "Animacion maquina de estados - Cristina Silva Alarcon", nullptr, nullptr);
+        "Practica 12 - Cristina Silva Alarcon", nullptr, nullptr);
 
     if (nullptr == window)
     {
@@ -249,19 +259,23 @@ int main()
     Model Piso((char*)"Models/piso.obj");
     Model Ball((char*)"Models/ball.obj");
 
-    // Init KeyFrames
-    for (int i = 0; i < MAX_FRAMES; i++)
+    // Init KeyFrames (todas las animaciones)
+    for (int a = 0; a < MAX_ANIMS; a++)
     {
-        KeyFrame[i].dogPosX = KeyFrame[i].dogPosY = KeyFrame[i].dogPosZ = 0;
-        KeyFrame[i].incX = KeyFrame[i].incY = KeyFrame[i].incZ = 0;
-        KeyFrame[i].rotDog = KeyFrame[i].rotDogInc = 0;
-        KeyFrame[i].head = KeyFrame[i].headInc = 0;
-        KeyFrame[i].tail = KeyFrame[i].tailInc = 0;
-        KeyFrame[i].torso = KeyFrame[i].torsoInc = 0;
-        KeyFrame[i].FLegL = KeyFrame[i].FLegLInc = 0;
-        KeyFrame[i].FLegR = KeyFrame[i].FLegRInc = 0;
-        KeyFrame[i].BLegL = KeyFrame[i].BLegLInc = 0;
-        KeyFrame[i].BLegR = KeyFrame[i].BLegRInc = 0;
+        FrameIndex[a] = 0;
+        for (int f = 0; f < MAX_FRAMES; f++)
+        {
+            KeyFrame[a][f].dogPosX = KeyFrame[a][f].dogPosY = KeyFrame[a][f].dogPosZ = 0;
+            KeyFrame[a][f].incX = KeyFrame[a][f].incY = KeyFrame[a][f].incZ = 0;
+            KeyFrame[a][f].rotDog = KeyFrame[a][f].rotDogInc = 0;
+            KeyFrame[a][f].head = KeyFrame[a][f].headInc = 0;
+            KeyFrame[a][f].tail = KeyFrame[a][f].tailInc = 0;
+            KeyFrame[a][f].torso = KeyFrame[a][f].torsoInc = 0;
+            KeyFrame[a][f].FLegL = KeyFrame[a][f].FLegLInc = 0;
+            KeyFrame[a][f].FLegR = KeyFrame[a][f].FLegRInc = 0;
+            KeyFrame[a][f].BLegL = KeyFrame[a][f].BLegLInc = 0;
+            KeyFrame[a][f].BLegR = KeyFrame[a][f].BLegRInc = 0;
+        }
     }
 
     GLuint VBO, VAO, EBO;
@@ -369,7 +383,7 @@ int main()
         model = glm::mat4(1);
         model = glm::translate(model, glm::vec3(dogPosX, dogPosY, dogPosZ));
         model = glm::rotate(model, glm::radians(rotDog), glm::vec3(0.0f, 1.0f, 0.0f));
-        model = glm::rotate(model, glm::radians(torso), glm::vec3(1.0f, 0.0f, 0.0f)); // inclinación torso
+        model = glm::rotate(model, glm::radians(torso), glm::vec3(1.0f, 0.0f, 0.0f));
         modelTemp = model;
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
         DogBody.Draw(lightingShader);
@@ -476,19 +490,19 @@ void DoMovement()
     if (keys[GLFW_KEY_8]) torso += 0.3f;
     if (keys[GLFW_KEY_9]) torso -= 0.3f;
 
-    // --- Pata delantera izquierda (individual) ---
+    // --- Pata delantera izquierda ---
     if (keys[GLFW_KEY_Z]) FLegL += 0.3f;
     if (keys[GLFW_KEY_X]) FLegL -= 0.3f;
 
-    // --- Pata delantera derecha (individual) ---
+    // --- Pata delantera derecha ---
     if (keys[GLFW_KEY_C]) FLegR += 0.3f;
     if (keys[GLFW_KEY_V]) FLegR -= 0.3f;
 
-    // --- Pata trasera izquierda (individual) ---
+    // --- Pata trasera izquierda ---
     if (keys[GLFW_KEY_B]) BLegL += 0.3f;
     if (keys[GLFW_KEY_N]) BLegL -= 0.3f;
 
-    // --- Pata trasera derecha (individual) ---
+    // --- Pata trasera derecha ---
     if (keys[GLFW_KEY_M]) BLegR += 0.3f;
     if (keys[GLFW_KEY_P]) BLegR -= 0.3f;
 
@@ -513,33 +527,55 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 
     if (key >= 0 && key < 1024)
     {
-        if (action == GLFW_PRESS)   keys[key] = true;
+        if (action == GLFW_PRESS)        keys[key] = true;
         else if (action == GLFW_RELEASE) keys[key] = false;
     }
 
-    // Guardar keyframe
-    if (keys[GLFW_KEY_K] && FrameIndex < MAX_FRAMES)
+    // ---- Seleccionar animación activa con teclado numérico (el de la derecha) ----
+    // KP_1 a KP_5  →  animaciones 0 a 4
+    if (action == GLFW_PRESS)
+    {
+        int newAnim = -1;
+        if (key == GLFW_KEY_KP_1) newAnim = 0;
+        if (key == GLFW_KEY_KP_2) newAnim = 1;
+        if (key == GLFW_KEY_KP_3) newAnim = 2;
+        if (key == GLFW_KEY_KP_4) newAnim = 3;
+        if (key == GLFW_KEY_KP_5) newAnim = 4;
+
+        if (newAnim >= 0)
+        {
+            play = false;
+            currentAnim = newAnim;
+            printf(">>> Animacion activa: %d  (frames grabados: %d)\n",
+                currentAnim, FrameIndex[currentAnim]);
+        }
+    }
+
+    // ---- Guardar keyframe en la animación activa ----
+    if (keys[GLFW_KEY_K] && FrameIndex[currentAnim] < MAX_FRAMES)
         saveFrame();
 
-    // Reproducir / detener animación
-    if (keys[GLFW_KEY_L])
+    // ---- Reproducir / detener la animación activa ----
+    if (key == GLFW_KEY_L && action == GLFW_PRESS)
     {
-        if (!play && FrameIndex > 1)
+        if (!play && FrameIndex[currentAnim] > 1)
         {
             resetElements();
-            interpolation();
-            play = true;
             playIndex = 0;
             i_curr_steps = 0;
+            interpolation();
+            play = true;
+            printf(">>> Reproduciendo animacion %d\n", currentAnim);
         }
         else
         {
             play = false;
+            printf(">>> Animacion detenida\n");
         }
     }
 
-    // Luz de color dinámica
-    if (keys[GLFW_KEY_SPACE])
+    // ---- Luz de color dinámica ----
+    if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
     {
         active = !active;
         Light1 = active ? glm::vec3(0.2f, 0.8f, 1.0f) : glm::vec3(0);
@@ -554,9 +590,9 @@ void Animation()
     if (i_curr_steps >= i_max_steps)
     {
         playIndex++;
-        if (playIndex > FrameIndex - 2)
+        if (playIndex > FrameIndex[currentAnim] - 2)
         {
-            printf("termina anim\n");
+            printf(">>> Termina animacion %d\n", currentAnim);
             playIndex = 0;
             play = false;
         }
@@ -568,19 +604,20 @@ void Animation()
     }
     else
     {
-        dogPosX += KeyFrame[playIndex].incX;
-        dogPosY += KeyFrame[playIndex].incY;
-        dogPosZ += KeyFrame[playIndex].incZ;
+        int a = currentAnim;
+        dogPosX += KeyFrame[a][playIndex].incX;
+        dogPosY += KeyFrame[a][playIndex].incY;
+        dogPosZ += KeyFrame[a][playIndex].incZ;
 
-        rotDog += KeyFrame[playIndex].rotDogInc;
-        head += KeyFrame[playIndex].headInc;
-        tail += KeyFrame[playIndex].tailInc;
-        torso += KeyFrame[playIndex].torsoInc;
+        rotDog += KeyFrame[a][playIndex].rotDogInc;
+        head += KeyFrame[a][playIndex].headInc;
+        tail += KeyFrame[a][playIndex].tailInc;
+        torso += KeyFrame[a][playIndex].torsoInc;
 
-        FLegL += KeyFrame[playIndex].FLegLInc;
-        FLegR += KeyFrame[playIndex].FLegRInc;
-        BLegL += KeyFrame[playIndex].BLegLInc;
-        BLegR += KeyFrame[playIndex].BLegRInc;
+        FLegL += KeyFrame[a][playIndex].FLegLInc;
+        FLegR += KeyFrame[a][playIndex].FLegRInc;
+        BLegL += KeyFrame[a][playIndex].BLegLInc;
+        BLegR += KeyFrame[a][playIndex].BLegRInc;
 
         i_curr_steps++;
     }
